@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Consultoría en gestión del talento humano, analítica de datos y optimización de procesos para entidades públicas.">
+  <meta name="theme-color" content="#022D63">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Julian Valderrama | Consultoría en Talento Humano">
+  <meta property="og:description" content="Consultoría en gestión del talento humano, analítica de datos y optimización de procesos para entidades públicas.">
+  <meta property="og:locale" content="es_CO">
+  <title>Julian Valderrama | Consultoría en Talento Humano</title>
+  <link rel="icon" type="image/png" href="assets/logo-corporativo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-fondo: #F3F3F3;
+      --color-azul: #022D63;
+      --color-dorado: #D3A23D;
+      --color-gris: #8C8C8C;
+      --color-rosa: #ff3366;
+      --color-rosa-oscuro: #d91f50;
+      --color-blanco: #ffffff;
+      --sombra: 0 12px 35px rgba(2, 45, 99, 0.09);
+      --radio: 18px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px;
+    }
+
+    body {
+      margin: 0;
+      background: var(--color-fondo);
+      color: #243247;
+      font-family: "Poppins", sans-serif;
+      line-height: 1.7;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .contenedor {
+      width: min(1120px, calc(100% - 48px));
+      margin-inline: auto;
+    }
+
+    .encabezado {
+      position: sticky;
+      z-index: 10;
+      top: 0;
+      background: rgba(255, 255, 255, 0.96);
+      box-shadow: 0 2px 18px rgba(2, 45, 99, 0.07);
+      backdrop-filter: blur(12px);
+    }
+
+    .barra-navegacion {
+      min-height: 82px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+    }
+
+    .marca {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--color-azul);
+      font-size: 0.92rem;
+      font-weight: 600;
+      line-height: 1.25;
+      text-decoration: none;
+    }
+
+    .marca img {
+      width: 52px;
+      height: 52px;
+      object-fit: contain;
+      border-radius: 50%;
+    }
+
+    .marca span {
+      max-width: 180px;
+    }
+
+    .enlaces-nav {
+      display: flex;
+      align-items: center;
+      gap: clamp(16px, 3vw, 36px);
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .enlaces-nav a {
+      color: #334155;
+      font-size: 0.9rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: color 180ms ease;
+    }
+
+    .enlaces-nav a:hover,
+    .enlaces-nav a:focus-visible {
+      color: var(--color-dorado);
+    }
+
+    .boton {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 12px 23px;
+      border: 0;
+      border-radius: 999px;
+      background: var(--color-rosa);
+      color: var(--color-blanco);
+      font: inherit;
+      font-size: 0.92rem;
+      font-weight: 600;
+      text-align: center;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background-color 180ms ease, transform 180ms ease, box-shadow 180ms ease;
+    }
+
+    .boton:hover,
+    .boton:focus-visible {
+      background: var(--color-rosa-oscuro);
+      box-shadow: 0 8px 20px rgba(217, 31, 80, 0.22);
+      transform: translateY(-2px);
+    }
+
+    .boton:active,
+    .boton.seleccionado {
+      background: var(--color-azul);
+      transform: translateY(0);
+    }
+
+    .boton-nav {
+      min-height: 42px;
+      padding: 9px 18px;
+      font-size: 0.84rem;
+    }
+
+    /* Sección hero: presenta al consultor y conduce al contacto. */
+    .hero {
+      position: relative;
+      display: flex;
+      min-height: 610px;
+      align-items: center;
+      overflow: hidden;
+      background-color: var(--color-azul);
+      background-image:
+        linear-gradient(90deg, rgba(2, 28, 62, 0.94) 0%, rgba(2, 35, 75, 0.86) 43%, rgba(2, 35, 75, 0.22) 100%),
+        url("assets/retrato-profesional.png");
+      background-position: center 38%;
+      background-size: cover;
+      color: var(--color-blanco);
+    }
+
+    .hero-contenido {
+      position: relative;
+      z-index: 1;
+      max-width: 700px;
+      padding-block: 92px;
+    }
+
+    .sobrelinea {
+      margin: 0 0 14px;
+      color: var(--color-dorado);
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      max-width: 740px;
+      margin: 0;
+      font-size: clamp(2.5rem, 6vw, 4.7rem);
+      font-weight: 600;
+      letter-spacing: -0.045em;
+      line-height: 1.12;
+    }
+
+    .hero h1 span {
+      color: var(--color-dorado);
+    }
+
+    .hero-descripcion {
+      max-width: 620px;
+      margin: 24px 0 30px;
+      color: rgba(255, 255, 255, 0.88);
+      font-size: clamp(1rem, 2vw, 1.15rem);
+    }
+
+    .hero-etiquetas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 32px;
+    }
+
+    .hero-etiquetas span {
+      padding: 7px 13px;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 999px;
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 0.78rem;
+    }
+
+    .seccion {
+      padding-block: 92px;
+    }
+
+    .encabezado-seccion {
+      max-width: 690px;
+      margin: 0 auto 42px;
+      text-align: center;
+    }
+
+    .encabezado-seccion .sobrelinea {
+      margin-bottom: 9px;
+    }
+
+    .encabezado-seccion h2 {
+      margin: 0;
+      color: var(--color-azul);
+      font-size: clamp(1.9rem, 4vw, 2.7rem);
+      letter-spacing: -0.035em;
+      line-height: 1.25;
+    }
+
+    .encabezado-seccion > p:last-child {
+      margin: 14px 0 0;
+      color: #667085;
+    }
+
+    /* Catálogo de soluciones: precios definidos según el alcance de cada entidad. */
+    .catalogo {
+      background: var(--color-fondo);
+    }
+
+    .rejilla-catalogo {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    .tarjeta-producto,
+    .tarjeta-servicio {
+      overflow: hidden;
+      border: 1px solid rgba(2, 45, 99, 0.06);
+      border-radius: var(--radio);
+      background: var(--color-blanco);
+      box-shadow: var(--sombra);
+      transition: transform 200ms ease, box-shadow 200ms ease;
+    }
+
+    .tarjeta-producto:hover,
+    .tarjeta-servicio:hover {
+      box-shadow: 0 18px 42px rgba(2, 45, 99, 0.14);
+      transform: translateY(-5px);
+    }
+
+    .tarjeta-producto img {
+      width: 100%;
+      height: 210px;
+      object-fit: cover;
+      background: #e7edf4;
+    }
+
+    .producto-contenido {
+      padding: 22px;
+    }
+
+    .producto-contenido h3,
+    .tarjeta-servicio h3 {
+      margin: 0 0 9px;
+      color: var(--color-azul);
+      font-size: 1.08rem;
+      line-height: 1.4;
+    }
+
+    .producto-contenido p,
+    .tarjeta-servicio p {
+      margin: 0;
+      color: #667085;
+      font-size: 0.9rem;
+    }
+
+    .producto-pie {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 19px;
+      padding-top: 15px;
+      border-top: 1px solid #edf0f4;
+    }
+
+    .enlace-cotizar {
+      color: var(--color-rosa);
+      font-size: 0.82rem;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .enlace-cotizar:hover,
+    .enlace-cotizar:focus-visible {
+      color: var(--color-rosa-oscuro);
+      text-decoration: underline;
+    }
+
+    /* Servicios: resume las tres líneas principales de consultoría. */
+    .servicios {
+      background: var(--color-blanco);
+    }
+
+    .rejilla-servicios {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    .tarjeta-servicio {
+      padding: 30px;
+    }
+
+    .icono-servicio {
+      display: grid;
+      width: 54px;
+      height: 54px;
+      margin-bottom: 20px;
+      place-items: center;
+      border-radius: 16px;
+      background: rgba(211, 162, 61, 0.14);
+      color: var(--color-azul);
+      font-size: 1.5rem;
+    }
+
+    .tarjeta-servicio p {
+      line-height: 1.8;
+    }
+
+    .publico-objetivo {
+      margin-top: 34px;
+      padding: 22px 26px;
+      border-left: 4px solid var(--color-dorado);
+      border-radius: 0 12px 12px 0;
+      background: #f7f8fa;
+      color: #475467;
+    }
+
+    .publico-objetivo strong {
+      color: var(--color-azul);
+    }
+
+    /* Contacto: formulario accesible con confirmación anunciada a lectores de pantalla. */
+    .contacto {
+      background: var(--color-fondo);
+    }
+
+    .contacto-contenido {
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
+      align-items: start;
+      gap: 54px;
+    }
+
+    .contacto-intro h2 {
+      margin: 0;
+      color: var(--color-azul);
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      letter-spacing: -0.035em;
+      line-height: 1.2;
+    }
+
+    .contacto-intro > p:not(.sobrelinea) {
+      margin: 18px 0 0;
+      color: #667085;
+    }
+
+    .nota-formulario {
+      margin: 14px 0 0;
+      color: #667085;
+      font-size: 0.84rem;
+    }
+
+    .contacto-dato {
+      margin-top: 26px;
+      padding: 18px;
+      border-radius: 14px;
+      background: var(--color-blanco);
+      color: var(--color-azul);
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .contacto-ubicacion {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 12px;
+      padding: 16px 18px;
+      border: 1px solid rgba(2, 45, 99, 0.08);
+      border-radius: 14px;
+      background: var(--color-blanco);
+      color: var(--color-azul);
+      font-size: 0.9rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+    }
+
+    .contacto-ubicacion:hover,
+    .contacto-ubicacion:focus-visible {
+      border-color: var(--color-dorado);
+      box-shadow: 0 8px 20px rgba(2, 45, 99, 0.08);
+      transform: translateY(-2px);
+    }
+
+    .boton-whatsapp {
+      display: inline-flex;
+      min-height: 48px;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      margin-top: 16px;
+      padding: 12px 20px;
+      border-radius: 999px;
+      background: #25D366;
+      color: #073b20;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+    }
+
+    .boton-whatsapp:hover,
+    .boton-whatsapp:focus-visible {
+      background: #1ebe5d;
+      box-shadow: 0 8px 20px rgba(37, 211, 102, 0.25);
+      transform: translateY(-2px);
+    }
+
+    .boton-telegram {
+      display: inline-flex;
+      min-height: 48px;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      margin: 16px 0 0 8px;
+      padding: 12px 20px;
+      border-radius: 999px;
+      background: #229ED9;
+      color: var(--color-blanco);
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+    }
+
+    .boton-telegram:hover,
+    .boton-telegram:focus-visible {
+      background: #168ac2;
+      box-shadow: 0 8px 20px rgba(34, 158, 217, 0.25);
+      transform: translateY(-2px);
+    }
+
+    .formulario {
+      display: grid;
+      gap: 17px;
+      padding: clamp(22px, 4vw, 34px);
+      border-radius: var(--radio);
+      background: var(--color-blanco);
+      box-shadow: var(--sombra);
+    }
+
+    .campo {
+      display: grid;
+      gap: 7px;
+    }
+
+    .campo label {
+      color: var(--color-azul);
+      font-size: 0.88rem;
+      font-weight: 500;
+    }
+
+    .campo input,
+    .campo textarea {
+      width: 100%;
+      padding: 13px 15px;
+      border: 1px solid #d9dee7;
+      border-radius: 10px;
+      background: #fff;
+      color: #243247;
+      font: inherit;
+      font-size: 0.9rem;
+      transition: border-color 180ms ease, box-shadow 180ms ease;
+    }
+
+    .campo input:focus,
+    .campo textarea:focus {
+      border-color: var(--color-azul);
+      outline: 0;
+      box-shadow: 0 0 0 3px rgba(2, 45, 99, 0.12);
+    }
+
+    .campo textarea {
+      min-height: 140px;
+      resize: vertical;
+    }
+
+    .formulario .boton {
+      justify-self: start;
+    }
+
+    .aviso-formulario {
+      min-height: 1.5em;
+      margin: 0;
+      color: #176b45;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    /* Pie de página con redes sociales y navegación secundaria. */
+    .pie-pagina {
+      padding-block: 28px;
+      background: #011f45;
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .pie-contenido {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .pie-contenido p {
+      margin: 0;
+      font-size: 0.82rem;
+    }
+
+    .redes-sociales {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .redes-sociales a {
+      display: inline-flex;
+      min-height: 40px;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      padding: 8px 15px;
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--color-blanco);
+      font-size: 0.84rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: background-color 180ms ease, border-color 180ms ease, transform 180ms ease;
+    }
+
+    .redes-sociales a:hover,
+    .redes-sociales a:focus-visible {
+      border-color: var(--color-dorado);
+      background: var(--color-azul);
+      color: var(--color-blanco);
+      transform: translateY(-2px);
+    }
+
+    .icono-red {
+      display: inline-grid;
+      width: 22px;
+      height: 22px;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--color-blanco);
+      color: #011f45;
+      font-size: 0.72rem;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .volver-arriba {
+      position: fixed;
+      z-index: 9;
+      right: 24px;
+      bottom: 24px;
+      display: grid;
+      width: 48px;
+      height: 48px;
+      padding: 0;
+      place-items: center;
+      border: 0;
+      border-radius: 50%;
+      background: var(--color-azul);
+      color: var(--color-blanco);
+      font: inherit;
+      font-size: 1.3rem;
+      cursor: pointer;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(10px);
+      transition: opacity 180ms ease, transform 180ms ease, background-color 180ms ease;
+    }
+
+    .volver-arriba.visible {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+    .volver-arriba:hover,
+    .volver-arriba:focus-visible {
+      background: var(--color-rosa-oscuro);
+    }
+
+    @media (max-width: 1024px) {
+      .rejilla-catalogo,
+      .rejilla-servicios {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .hero {
+        min-height: 560px;
+        background-position: 58% center;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .contenedor {
+        width: min(100% - 32px, 460px);
+      }
+
+      .barra-navegacion {
+        min-height: 72px;
+        flex-wrap: wrap;
+        gap: 8px 14px;
+        padding-block: 10px;
+      }
+
+      .marca img {
+        width: 44px;
+        height: 44px;
+      }
+
+      .marca span {
+        max-width: 130px;
+        font-size: 0.78rem;
+      }
+
+      .enlaces-nav {
+        order: 3;
+        width: 100%;
+        justify-content: space-between;
+        gap: 10px;
+      }
+
+      .enlaces-nav a {
+        font-size: 0.78rem;
+      }
+
+      .boton-nav {
+        min-height: 38px;
+        padding: 8px 13px;
+        font-size: 0.75rem;
+      }
+
+      .hero {
+        min-height: 590px;
+        align-items: end;
+        background-image:
+          linear-gradient(0deg, rgba(2, 28, 62, 0.96) 0%, rgba(2, 35, 75, 0.85) 48%, rgba(2, 35, 75, 0.1) 100%),
+          url("assets/retrato-profesional.png");
+        background-position: 61% center;
+      }
+
+      .hero-contenido {
+        padding-block: 66px 48px;
+      }
+
+      .hero-descripcion {
+        margin-block: 18px 24px;
+      }
+
+      .seccion {
+        padding-block: 68px;
+      }
+
+      .rejilla-catalogo,
+      .rejilla-servicios {
+        grid-template-columns: 1fr;
+      }
+
+      .tarjeta-producto img {
+        height: 220px;
+      }
+
+      .contacto-contenido {
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+
+      .pie-contenido {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .volver-arriba {
+        right: 16px;
+        bottom: 16px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Encabezado semántico con identidad y enlaces de navegación. -->
+  <header class="encabezado">
+    <nav class="barra-navegacion contenedor" aria-label="Navegación principal">
+      <a class="marca" href="#inicio" aria-label="Julian Valderrama, ir al inicio">
+        <img src="assets/logo-corporativo.png" alt="">
+        <span>JULIAN VALDERRAMA<br>Consultor en talento humano</span>
+      </a>
+      <ul class="enlaces-nav">
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#catalogo">Catálogo</a></li>
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+      <a class="boton boton-nav" href="#contacto">Conversemos</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Hero con imagen de fondo, propuesta de valor y llamado a la acción. -->
+    <section class="hero" id="inicio" aria-labelledby="titulo-principal">
+      <div class="contenedor hero-contenido">
+        <p class="sobrelinea">Ingeniería industrial · Talento humano</p>
+        <h1 id="titulo-principal">Personas, procesos y datos para <span>transformar resultados.</span></h1>
+        <p class="hero-descripcion">Acompaño a entidades públicas a fortalecer su gestión humana con analítica, procesos eficientes y decisiones centradas en las personas.</p>
+        <a class="boton" href="#contacto">Agenda una conversación</a>
+        <div class="hero-etiquetas" aria-label="Áreas de experiencia">
+          <span>Analítica de datos</span>
+          <span>Optimización de procesos</span>
+          <span>Sector público</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Catálogo de seis soluciones de consultoría. -->
+    <section class="seccion catalogo" id="catalogo" aria-labelledby="titulo-catalogo">
+      <div class="contenedor">
+        <div class="encabezado-seccion">
+          <p class="sobrelinea">Soluciones a tu medida</p>
+          <h2 id="titulo-catalogo">Catálogo de consultoría</h2>
+          <p>Servicios diseñados para convertir los retos de gestión humana en oportunidades de mejora institucional.</p>
+        </div>
+        <div class="rejilla-catalogo">
+          <article class="tarjeta-producto">
+            <img src="assets/consultoria-talento.jpg" alt="Ilustración de consultoría para la gestión del talento humano" loading="lazy">
+            <div class="producto-contenido">
+              <h3>Diagnóstico de gestión humana</h3>
+              <p>Evaluación de prácticas, capacidades y prioridades para construir una hoja de ruta institucional.</p>
+              <div class="producto-pie"><a class="enlace-cotizar" href="#contacto">Consultar servicio →</a></div>
+            </div>
+          </article>
+          <article class="tarjeta-producto">
+            <img src="assets/control-procesos.jpg" alt="Diagrama de procesos, calidad y mejora continua" loading="lazy">
+            <div class="producto-contenido">
+              <h3>Optimización de procesos</h3>
+              <p>Mapeo y mejora de procesos de talento humano para ganar eficiencia, claridad y trazabilidad.</p>
+              <div class="producto-pie"><a class="enlace-cotizar" href="#contacto">Consultar servicio →</a></div>
+            </div>
+          </article>
+          <article class="tarjeta-producto">
+            <img src="assets/analytics-dashboard.png" alt="Analítica de datos e inteligencia artificial en tableros de indicadores" loading="lazy">
+            <div class="producto-contenido">
+              <h3>Analítica de datos e informes</h3>
+              <p>Organización, análisis y visualización de datos para respaldar decisiones de talento humano.</p>
+              <div class="producto-pie"><a class="enlace-cotizar" href="#contacto">Consultar servicio →</a></div>
+            </div>
+          </article>
+          <article class="tarjeta-producto">
+            <img src="assets/indicadores.png" alt="Gráfico ascendente de indicadores y resultados" loading="lazy">
+            <div class="producto-contenido">
+              <h3>Indicadores de talento humano</h3>
+              <p>Definición de métricas y tableros de seguimiento conectados con los objetivos de la entidad.</p>
+              <div class="producto-pie"><a class="enlace-cotizar" href="#contacto">Consultar servicio →</a></div>
+            </div>
+          </article>
+          <article class="tarjeta-producto">
+            <img src="assets/seleccion-competencias.jpg" alt="Selección y evaluación de talento humano" loading="lazy">
+            <div class="producto-contenido">
+              <h3>Selección por competencias</h3>
+              <p>Apoyo metodológico para estructurar perfiles y procesos de selección basados en competencias.</p>
+              <div class="producto-pie"><a class="enlace-cotizar" href="#contacto">Consultar servicio →</a></div>
+            </div>
+          </article>
+          <article class="tarjeta-producto">
+            <img src="assets/banner-recursos-humanos.png" alt="Organización de información para el desarrollo de recursos humanos" loading="lazy">
+            <div class="producto-contenido">
+              <h3>Plan estratégico de talento</h3>
+              <p>Priorización de iniciativas y acompañamiento para alinear el talento con los resultados institucionales.</p>
+              <div class="producto-pie"><a class="enlace-cotizar" href="#contacto">Consultar servicio →</a></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Servicios principales organizados en tres tarjetas informativas. -->
+    <section class="seccion servicios" id="servicios" aria-labelledby="titulo-servicios">
+      <div class="contenedor">
+        <div class="encabezado-seccion">
+          <p class="sobrelinea">Cómo puedo ayudarte</p>
+          <h2 id="titulo-servicios">Servicios para una gestión más estratégica</h2>
+          <p>Un enfoque que integra personas, procesos y evidencia para lograr cambios sostenibles.</p>
+        </div>
+        <div class="rejilla-servicios">
+          <article class="tarjeta-servicio">
+            <div class="icono-servicio" aria-hidden="true">◎</div>
+            <h3>Consultoría en gestión humana</h3>
+            <p>Asesoría para fortalecer la planeación, el desarrollo y las prácticas de talento humano en entidades públicas.</p>
+          </article>
+          <article class="tarjeta-servicio">
+            <div class="icono-servicio" aria-hidden="true">↗</div>
+            <h3>Analítica para decidir mejor</h3>
+            <p>Transformación de datos en indicadores, informes y hallazgos útiles para orientar decisiones institucionales.</p>
+          </article>
+          <article class="tarjeta-servicio">
+            <div class="icono-servicio" aria-hidden="true">⚙</div>
+            <h3>Procesos eficientes y medibles</h3>
+            <p>Identificación de oportunidades de mejora y diseño de procesos claros, medibles y centrados en las personas.</p>
+          </article>
+        </div>
+        <aside class="publico-objetivo">
+          <strong>Especial enfoque en el sector público:</strong> acompañamiento contextualizado para entidades que buscan fortalecer su capacidad institucional y el servicio a la ciudadanía.
+        </aside>
+      </div>
+    </section>
+
+    <!-- Formulario de contacto con campos etiquetados y validación nativa. -->
+    <section class="seccion contacto" id="contacto" aria-labelledby="titulo-contacto">
+      <div class="contenedor contacto-contenido">
+        <div class="contacto-intro">
+          <p class="sobrelinea">Hablemos de tu reto</p>
+          <h2 id="titulo-contacto">Construyamos mejores resultados.</h2>
+          <p>Cuéntame qué necesita tu entidad y conversemos sobre una solución de gestión humana alineada con sus objetivos.</p>
+          <div class="contacto-dato">Ingeniería industrial · Gerencia de talento humano · Analítica de datos</div>
+          <a class="contacto-ubicacion" href="https://www.google.com/maps/search/?api=1&query=Cali%2C%20Valle%20del%20Cauca%2C%20Colombia" target="_blank" rel="noopener noreferrer" aria-label="Ver Cali, Valle del Cauca, Colombia en Google Maps (se abre en una pestaña nueva)">
+            <span aria-hidden="true">📍</span> Cali, Valle del Cauca, Colombia
+          </a>
+          <a class="boton-whatsapp" href="https://wa.me/573117130105?text=Hola%2C%20Julian%20Valderrama%20M.%2C%20quisiera%20informaci%C3%B3n%20sobre%20tus%20servicios%20de%20consultor%C3%ADa." target="_blank" rel="noopener noreferrer" aria-label="Escribir por WhatsApp a Julian Valderrama M. al número +57 311 713 0105 (se abre en una pestaña nueva)">
+            <span aria-hidden="true">☏</span> WhatsApp · Julian Valderrama M.
+          </a>
+          <a class="boton-telegram" href="https://t.me/+573117130105" target="_blank" rel="noopener noreferrer" aria-label="Contactar a Julian Valderrama M. por Telegram al número +57 311 713 0105 (se abre en una pestaña nueva)">
+            <span aria-hidden="true">➤</span> Telegram · Julian Valderrama M.
+          </a>
+          <p class="nota-formulario">El formulario muestra una confirmación en esta página, pero no envía el mensaje. Para contactarme directamente, usa WhatsApp o Telegram.</p>
+        </div>
+        <form class="formulario" id="formulario-contacto">
+          <div class="campo">
+            <label for="nombre">Nombre <span aria-hidden="true">*</span></label>
+            <input id="nombre" name="nombre" type="text" autocomplete="name" placeholder="Escribe tu nombre completo" required>
+          </div>
+          <div class="campo">
+            <label for="correo">Correo electrónico <span aria-hidden="true">*</span></label>
+            <input id="correo" name="correo" type="email" autocomplete="email" placeholder="nombre@entidad.gov.co" required>
+          </div>
+          <div class="campo">
+            <label for="mensaje">Mensaje <span aria-hidden="true">*</span></label>
+            <textarea id="mensaje" name="mensaje" placeholder="Cuéntame brevemente cómo puedo ayudarte" required></textarea>
+          </div>
+          <button class="boton" type="submit">Enviar mensaje</button>
+          <p class="aviso-formulario" id="aviso-formulario" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- Pie de página con derechos reservados y enlaces sociales. -->
+  <footer class="pie-pagina">
+    <div class="contenedor pie-contenido">
+      <p>&copy; <span id="anio-actual"></span> Julian Valderrama. Todos los derechos reservados.</p>
+      <nav class="redes-sociales" aria-label="Redes sociales">
+        <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" aria-label="Visitar LinkedIn (se abre en una pestaña nueva)">
+          <span class="icono-red" aria-hidden="true">in</span> LinkedIn
+        </a>
+        <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Visitar Instagram (se abre en una pestaña nueva)">
+          <span class="icono-red" aria-hidden="true">◎</span> Instagram
+        </a>
+      </nav>
+    </div>
+  </footer>
+
+  <!-- Control flotante para regresar al inicio cuando se desplaza la página. -->
+  <button class="volver-arriba" id="volver-arriba" type="button" aria-label="Volver arriba" title="Volver arriba">↑</button>
+
+  <script>
+    // Confirma el envío en esta página y aplica validación nativa antes de mostrar el aviso.
+    const formulario = document.querySelector("#formulario-contacto");
+    const avisoFormulario = document.querySelector("#aviso-formulario");
+    const botonEnviar = formulario.querySelector('button[type="submit"]');
+
+    formulario.addEventListener("submit", (evento) => {
+      evento.preventDefault();
+
+      if (!formulario.reportValidity()) {
+        return;
+      }
+
+      const nombre = formulario.elements.nombre.value.trim();
+      avisoFormulario.textContent = `¡Gracias, ${nombre}! El formulario se validó, pero el mensaje no se envió. Contáctame por WhatsApp o Telegram para recibir tu solicitud.`;
+      botonEnviar.classList.add("seleccionado");
+      window.setTimeout(() => botonEnviar.classList.remove("seleccionado"), 450);
+    });
+
+    // Actualiza el año del aviso legal automáticamente.
+    document.querySelector("#anio-actual").textContent = new Date().getFullYear();
+
+    // Muestra u oculta el acceso al inicio según la posición de desplazamiento.
+    const botonVolverArriba = document.querySelector("#volver-arriba");
+
+    window.addEventListener("scroll", () => {
+      botonVolverArriba.classList.toggle("visible", window.scrollY > 420);
+    }, { passive: true });
+
+    botonVolverArriba.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  </script>
+</body>
+</html>
